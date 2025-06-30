@@ -1,0 +1,475 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    height: calc(100vh - 40px);
+}
+
+/* Sol Panel - Editor */
+.editor-panel {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    backdrop-filter: blur(10px);
+}
+
+.editor-panel h1 {
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 28px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+    font-size: 14px;
+}
+
+/* Field Header with Toggle */
+.field-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+/* Toggle Switch Styles */
+.visibility-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.toggle-switch {
+    display: none;
+}
+
+.toggle-label {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 24px;
+    transition: 0.3s;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-switch:checked + .toggle-label .toggle-slider {
+    background-color: #667eea;
+}
+
+.toggle-switch:checked + .toggle-label .toggle-slider:before {
+    transform: translateX(20px);
+}
+
+.toggle-label:hover .toggle-slider {
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Font Controls */
+.font-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.font-selector {
+    flex: 1;
+    min-width: 120px;
+}
+
+.font-size-input {
+    width: 80px;
+    flex: 0 0 auto;
+}
+
+.font-weight-selector {
+    width: 100px;
+    flex: 0 0 auto;
+}
+
+@media (max-width: 768px) {
+    .font-controls {
+        flex-direction: column;
+    }
+    
+    .font-selector,
+    .font-size-input,
+    .font-weight-selector {
+        width: 100%;
+    }
+}
+
+.logo-preview {
+    margin-top: 10px;
+    min-height: 60px;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+}
+
+.logo-preview img {
+    max-width: 100%;
+    max-height: 80px;
+    object-fit: contain;
+}
+
+.print-button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.print-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Sağ Panel - Preview */
+.preview-panel {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    backdrop-filter: blur(10px);
+}
+
+.preview-panel h2 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+/* Receipt Preview Styles */
+.receipt-preview {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+}
+
+.receipt-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo-container {
+    margin-bottom: 15px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-container img {
+    max-width: 100%;
+    max-height: 80px;
+    object-fit: contain;
+}
+
+.company-name {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.receipt-date {
+    font-size: 14px;
+    color: #666;
+    font-family: 'Roboto', sans-serif;
+}
+
+.company-address,
+.company-phone,
+.company-email,
+.company-tax-number {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.company-address:empty,
+.company-phone:empty,
+.company-email:empty,
+.company-tax-number:empty {
+    display: none;
+}
+
+/* Company Details Layout */
+.company-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    gap: 20px;
+}
+
+.company-left,
+.company-right {
+    flex: 1;
+}
+
+.company-left {
+    text-align: left;
+}
+
+.company-right {
+    text-align: right;
+}
+
+.company-left .company-address,
+.company-left .company-tax-number,
+.company-right .company-phone,
+.company-right .receipt-date {
+    margin-bottom: 3px;
+}
+
+@media (max-width: 480px) {
+    .company-details {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .company-right {
+        text-align: left;
+    }
+}
+
+/* Hidden fields */
+.field-hidden {
+    display: none !important;
+}
+
+.receipt-divider {
+    border-top: 2px solid #333;
+    margin: 20px 0;
+}
+
+.receipt-content {
+    margin-bottom: 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #333;
+    white-space: pre-line;
+    letter-spacing: 0.5px;
+    background: #fafafa;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+}
+
+.receipt-content p {
+    margin: 0;
+    padding: 0;
+}
+
+.receipt-totals {
+    margin-bottom: 20px;
+}
+
+.receipt-totals > div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.subtotal-row, .kdv-row {
+    font-size: 14px;
+    color: #666;
+}
+
+.total-row {
+    font-size: 16px;
+    color: #333;
+    border-top: 1px solid #ddd;
+    padding-top: 8px;
+    margin-top: 10px;
+}
+
+.receipt-footer {
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    font-family: 'Roboto', sans-serif;
+    white-space: pre-line;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        height: auto;
+    }
+    
+    .editor-panel,
+    .preview-panel {
+        padding: 20px;
+    }
+    
+    .receipt-preview {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        gap: 15px;
+    }
+    
+    .editor-panel,
+    .preview-panel {
+        padding: 15px;
+    }
+    
+    .editor-panel h1,
+    .preview-panel h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .receipt-preview {
+        padding: 20px;
+    }
+    
+    .company-name {
+        font-size: 20px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+    
+    .container {
+        display: block;
+        max-width: none;
+        height: auto;
+    }
+    
+    .editor-panel {
+        display: none;
+    }
+    
+    .preview-panel {
+        background: white;
+        box-shadow: none;
+        padding: 0;
+    }
+    
+    .preview-panel h2 {
+        display: none;
+    }
+    
+    .receipt-preview {
+        box-shadow: none;
+        max-width: none;
+        margin: 0;
+    }
+}
+
+/* Font Application Classes */
+.font-roboto { font-family: 'Roboto', sans-serif !important; }
+.font-opensans { font-family: 'Open Sans', sans-serif !important; }
+.font-lato { font-family: 'Lato', sans-serif !important; }
+.font-montserrat { font-family: 'Montserrat', sans-serif !important; }
+.font-poppins { font-family: 'Poppins', sans-serif !important; } 

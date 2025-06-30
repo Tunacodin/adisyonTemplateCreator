@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adisyon Template Uygulaması</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sol Panel - Düzenleme Alanı -->
+        <div class="editor-panel">
+            <h1>Adisyon Template Editörü</h1>
+            
+            <div class="form-group">
+                <div class="field-header">
+                    <label for="logo-upload">Logo:</label>
+                    <div class="visibility-toggle">
+                        <input type="checkbox" id="logo-visibility" class="toggle-switch" checked>
+                        <label for="logo-visibility" class="toggle-label">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <input type="file" id="logo-upload" accept="image/*">
+                <div class="logo-preview" id="logo-preview">
+                    <svg width="120" height="80" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+                      <!-- Kahve fincanı -->
+                      <g transform="translate(20, 15)">
+                        <!-- Fincan gövdesi -->
+                        <path d="M10 20 Q10 15 15 15 L55 15 Q60 15 60 20 L58 45 Q58 50 53 50 L17 50 Q12 50 12 45 Z" 
+                              fill="#8B4513" stroke="#654321" stroke-width="1"/>
+                        
+                        <!-- Fincan içi (kahve) -->
+                        <ellipse cx="35" cy="18" rx="22" ry="3" fill="#3E2723"/>
+                        
+                        <!-- Fincan kulpu -->
+                        <path d="M60 25 Q70 25 70 35 Q70 40 65 40 Q62 40 60 38" 
+                              fill="none" stroke="#654321" stroke-width="2"/>
+                        
+                        <!-- Tabak -->
+                        <ellipse cx="35" cy="55" rx="30" ry="5" fill="#D2B48C" stroke="#8B7355" stroke-width="1"/>
+                        
+                        <!-- Steam (buhar) -->
+                        <path d="M25 12 Q27 8 25 4 Q23 8 25 12" fill="#E0E0E0" opacity="0.7"/>
+                        <path d="M35 10 Q37 6 35 2 Q33 6 35 10" fill="#E0E0E0" opacity="0.7"/>
+                        <path d="M45 12 Q47 8 45 4 Q43 8 45 12" fill="#E0E0E0" opacity="0.7"/>
+                      </g>
+                      
+                      <!-- Cafe yazısı -->
+                      <text x="85" y="35" font-family="serif" font-size="14" font-weight="bold" fill="#8B4513">Cafe</text>
+                      <text x="85" y="50" font-family="serif" font-size="12" fill="#8B4513">Latte</text>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="field-header">
+                    <label for="company-name">Şirket Adı:</label>
+                    <div class="visibility-toggle">
+                        <input type="checkbox" id="company-name-visibility" class="toggle-switch" checked>
+                        <label for="company-name-visibility" class="toggle-label">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <input type="text" id="company-name" placeholder="Şirket adınızı girin">
+                <div class="font-controls">
+                    <select id="company-font" class="font-selector">
+                        <option value="Roboto">Roboto</option>
+                        <option value="Open Sans">Open Sans</option>
+                        <option value="Lato">Lato</option>
+                        <option value="Montserrat">Montserrat</option>
+                        <option value="Poppins">Poppins</option>
+                    </select>
+                    <input type="number" id="company-font-size" class="font-size-input" placeholder="24" min="8" max="72" step="1">
+                    <select id="company-font-weight" class="font-weight-selector">
+                        <option value="normal">Normal</option>
+                        <option value="bold">Kalın</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="field-header">
+                    <label for="date-input">Tarih:</label>
+                    <div class="visibility-toggle">
+                        <input type="checkbox" id="date-visibility" class="toggle-switch" checked>
+                        <label for="date-visibility" class="toggle-label">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <input type="date" id="date-input">
+                <div class="font-controls">
+                    <select id="date-font" class="font-selector">
+                        <option value="Roboto">Roboto</option>
+                        <option value="Open Sans">Open Sans</option>
+                        <option value="Lato">Lato</option>
+                        <option value="Montserrat">Montserrat</option>
+                        <option value="Poppins">Poppins</option>
+                    </select>
+                    <input type="number" id="date-font-size" class="font-size-input" placeholder="14" min="8" max="72" step="1">
+                    <select id="date-font-weight" class="font-weight-selector">
+                        <option value="normal">Normal</option>
+                        <option value="bold">Kalın</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="field-header">
+                    <label for="company-address">Şirket Adresi:</label>
+                    <div class="visibility-toggle">
+                        <input type="checkbox" id="address-visibility" class="toggle-switch" checked>
+                        <label for="address-visibility" class="toggle-label">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <input type="text" id="company-address" placeholder="Şirket adresinizi girin">
+                <div class="font-controls">
+                    <select id="address-font" class="font-selector">
+                        <option value="Roboto">Roboto</option>
+                        <option value="Open Sans">Open Sans</option>
+                        <option value="Lato">Lato</option>
+                        <option value="Montserrat">Montserrat</option>
+                        <option value="Poppins">Poppins</option>
+                    </select>
+                    <input type="number" id="address-font-size" class="font-size-input" placeholder="12" min="8" max="72" step="1">
+                    <select id="address-font-weight" class="font-weight-selector">
+                        <option value="normal">Normal</option>
+                        <option value="bold">Kalın</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="field-header">
+                    <label for="company-phone">Şirket Telefonu:</label>
+                    <div class="visibility-toggle">
+                        <input type="checkbox" id="phone-visibility" class="toggle-switch" checked>
+                        <label for="phone-visibility" class="toggle-label">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <input type="tel" id="company-phone" placeholder="Şirket telefonunuzu girin">
+                <div class="font-controls">
+                    <select id="phone-font" class="font-selector">
+                        <option value="Roboto">Roboto</option>
+                        <option value="Open Sans">Open Sans</option>
+                        <option value="Lato">Lato</option>
+                        <option value="Montserrat">Montserrat</option>
+                        <option value="Poppins">Poppins</option>
+                    </select>
+                    <input type="number" id="phone-font-size" class="font-size-input" placeholder="12" min="8" max="72" step="1">
+                    <select id="phone-font-weight" class="font-weight-selector">
+                        <option value="normal">Normal</option>
+                        <option value="bold">Kalın</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="field-header">
+                    <label for="company-email">Şirket Email:</label>
+                    <div class="visibility-toggle">
+                        <input type="checkbox" id="email-visibility" class="toggle-switch" checked>
+                        <label for="email-visibility" class="toggle-label">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <input type="email" id="company-email" placeholder="Şirket emailinizi girin">
+                <div class="font-controls">
+                    <select id="email-font" class="font-selector">
+                        <option value="Roboto">Roboto</option>
+                        <option value="Open Sans">Open Sans</option>
+                        <option value="Lato">Lato</option>
+                        <option value="Montserrat">Montserrat</option>
+                        <option value="Poppins">Poppins</option>
+                    </select>
+                    <input type="number" id="email-font-size" class="font-size-input" placeholder="12" min="8" max="72" step="1">
+                    <select id="email-font-weight" class="font-weight-selector">
+                        <option value="normal">Normal</option>
+                        <option value="bold">Kalın</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="field-header">
+                    <label for="company-tax-number">Vergi Numarası:</label>
+                    <div class="visibility-toggle">
+                        <input type="checkbox" id="tax-number-visibility" class="toggle-switch" checked>
+                        <label for="tax-number-visibility" class="toggle-label">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <input type="text" id="company-tax-number" placeholder="Şirket vergi numaranızı girin">
+                <div class="font-controls">
+                    <select id="tax-number-font" class="font-selector">
+                        <option value="Roboto">Roboto</option>
+                        <option value="Open Sans">Open Sans</option>
+                        <option value="Lato">Lato</option>
+                        <option value="Montserrat">Montserrat</option>
+                        <option value="Poppins">Poppins</option>
+                    </select>
+                    <input type="number" id="tax-number-font-size" class="font-size-input" placeholder="12" min="8" max="72" step="1">
+                    <select id="tax-number-font-weight" class="font-weight-selector">
+                        <option value="normal">Normal</option>
+                        <option value="bold">Kalın</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="field-header">
+                    <label for="receipt-content">Adisyon İçeriği:</label>
+                    <div class="visibility-toggle">
+                        <input type="checkbox" id="content-visibility" class="toggle-switch" checked>
+                        <label for="content-visibility" class="toggle-label">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <textarea id="receipt-content" rows="6" placeholder="Ice Latte Mocha                 90 x 2
+Cappuccino                      75 x 1
+Cheesecake                      65 x 1
+Servis Ücreti                   25 x 1"></textarea>
+                <div class="font-controls">
+                    <select id="content-font" class="font-selector">
+                        <option value="Roboto">Roboto</option>
+                        <option value="Open Sans">Open Sans</option>
+                        <option value="Lato">Lato</option>
+                        <option value="Montserrat">Montserrat</option>
+                        <option value="Poppins">Poppins</option>
+                    </select>
+                    <input type="number" id="content-font-size" class="font-size-input" placeholder="14" min="8" max="72" step="1">
+                    <select id="content-font-weight" class="font-weight-selector">
+                        <option value="normal">Normal</option>
+                        <option value="bold">Kalın</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="field-header">
+                    <label for="kdv-amount">KDV Miktarı (%):</label>
+                    <div class="visibility-toggle">
+                        <input type="checkbox" id="kdv-visibility" class="toggle-switch" checked>
+                        <label for="kdv-visibility" class="toggle-label">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <input type="number" id="kdv-amount" placeholder="18" min="0" max="100" step="0.1">
+                <div class="font-controls">
+                    <select id="kdv-font" class="font-selector">
+                        <option value="Roboto">Roboto</option>
+                        <option value="Open Sans">Open Sans</option>
+                        <option value="Lato">Lato</option>
+                        <option value="Montserrat">Montserrat</option>
+                        <option value="Poppins">Poppins</option>
+                    </select>
+                    <input type="number" id="kdv-font-size" class="font-size-input" placeholder="14" min="8" max="72" step="1">
+                    <select id="kdv-font-weight" class="font-weight-selector">
+                        <option value="normal">Normal</option>
+                        <option value="bold">Kalın</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="subtotal">Ara Toplam:</label>
+                <input type="number" id="subtotal" placeholder="0.00" min="0" step="0.01">
+            </div>
+
+            <div class="form-group">
+                <div class="field-header">
+                    <label for="footer-text">Footer Metni:</label>
+                    <div class="visibility-toggle">
+                        <input type="checkbox" id="footer-visibility" class="toggle-switch" checked>
+                        <label for="footer-visibility" class="toggle-label">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <textarea id="footer-text" rows="3" placeholder="İyi günler, teşekkür ederiz..."></textarea>
+                <div class="font-controls">
+                    <select id="footer-font" class="font-selector">
+                        <option value="Roboto">Roboto</option>
+                        <option value="Open Sans">Open Sans</option>
+                        <option value="Lato">Lato</option>
+                        <option value="Montserrat">Montserrat</option>
+                        <option value="Poppins">Poppins</option>
+                    </select>
+                    <input type="number" id="footer-font-size" class="font-size-input" placeholder="12" min="8" max="72" step="1">
+                    <select id="footer-font-weight" class="font-weight-selector">
+                        <option value="normal">Normal</option>
+                        <option value="bold">Kalın</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button id="print-btn" class="print-button">Yazdır / PDF İndir</button>
+            </div>
+        </div>
+
+        <!-- Sağ Panel - Önizleme Alanı -->
+        <div class="preview-panel">
+            <h2>Önizleme</h2>
+            <div class="receipt-preview" id="receipt-preview">
+                <div class="receipt-header">
+                    <div class="logo-container" id="preview-logo">
+                        <svg width="120" height="80" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+                          <!-- Kahve fincanı -->
+                          <g transform="translate(20, 15)">
+                            <!-- Fincan gövdesi -->
+                            <path d="M10 20 Q10 15 15 15 L55 15 Q60 15 60 20 L58 45 Q58 50 53 50 L17 50 Q12 50 12 45 Z" 
+                                  fill="#8B4513" stroke="#654321" stroke-width="1"/>
+                            
+                            <!-- Fincan içi (kahve) -->
+                            <ellipse cx="35" cy="18" rx="22" ry="3" fill="#3E2723"/>
+                            
+                            <!-- Fincan kulpu -->
+                            <path d="M60 25 Q70 25 70 35 Q70 40 65 40 Q62 40 60 38" 
+                                  fill="none" stroke="#654321" stroke-width="2"/>
+                            
+                            <!-- Tabak -->
+                            <ellipse cx="35" cy="55" rx="30" ry="5" fill="#D2B48C" stroke="#8B7355" stroke-width="1"/>
+                            
+                            <!-- Steam (buhar) -->
+                            <path d="M25 12 Q27 8 25 4 Q23 8 25 12" fill="#E0E0E0" opacity="0.7"/>
+                            <path d="M35 10 Q37 6 35 2 Q33 6 35 10" fill="#E0E0E0" opacity="0.7"/>
+                            <path d="M45 12 Q47 8 45 4 Q43 8 45 12" fill="#E0E0E0" opacity="0.7"/>
+                          </g>
+                          
+                          <!-- Cafe yazısı -->
+                          <text x="85" y="35" font-family="serif" font-size="14" font-weight="bold" fill="#8B4513">Cafe</text>
+                          <text x="85" y="50" font-family="serif" font-size="12" fill="#8B4513">Latte</text>
+                        </svg>
+                    </div>
+                    <div class="company-name" id="preview-company">Cafe Latte</div>
+                    <div class="company-email" id="preview-email">E-mail: info@cafelatte.com</div>
+                    
+                    <div class="company-details">
+                        <div class="company-left">
+                            <div class="company-address" id="preview-address">Adres: Bağdat Caddesi No: 123, Kadıköy/İstanbul</div>
+                            <div class="company-tax-number" id="preview-tax-number">Vergi No: 1234567890</div>
+                        </div>
+                        <div class="company-right">
+                            <div class="company-phone" id="preview-phone">Tel: 0216 123 45 67</div>
+                            <div class="receipt-date" id="preview-date">Tarih: </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="receipt-divider"></div>
+                
+                <div class="receipt-content" id="preview-content">
+                    Ice Latte Mocha                 90 x 2
+Cappuccino                      75 x 1
+Cheesecake                      65 x 1
+Servis Ücreti                   25 x 1
+                </div>
+                
+                <div class="receipt-divider"></div>
+                
+                <div class="receipt-totals">
+                    <div class="subtotal-row">
+                        <span>Ara Toplam:</span>
+                        <span id="preview-subtotal">0.00 ₺</span>
+                    </div>
+                    <div class="kdv-row">
+
+                        <span>KDV (<span id="preview-kdv-rate">18</span>%):</span>
+
+                        <span id="preview-kdv-amount">0.00 ₺</span>
+
+                    </div>
+                    <div class="total-row">
+                        <span><strong>Toplam:</strong></span>
+
+                        <span id="preview-total"><strong>0.00 ₺</strong></span>
+                        
+                    </div>
+                </div>
+                
+                <div class="receipt-divider"></div>
+                
+                <div class="receipt-footer" id="preview-footer">
+                    
+                    İyi günler, teşekkür ederiz.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
