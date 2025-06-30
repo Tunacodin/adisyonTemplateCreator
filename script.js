@@ -38,10 +38,10 @@ function setDefaultValues() {
         'İyi günler, teşekkür ederiz.\nBizi tercih ettiğiniz için minnettarız.';
     
     // Varsayılan adisyon içeriği
-    $('#receipt-content').value = `Ice Latte Mocha                 90 x 2
-Cappuccino                      75 x 1
-Cheesecake                      65 x 1
-Servis Ücreti                   25 x 1`;
+    $('#receipt-content').value = `Ice Latte Mocha 90 x 2
+Cappuccino 75 x 1
+Cheesecake 65 x 1
+Servis Ücreti 25 x 1`;
     
     // Varsayılan ara toplam (örnek hesaplama)
     $('#subtotal').value = 345;
@@ -212,13 +212,33 @@ function updateDate() {
 }
 
 function updateContent() {
-    const defaultContent = `Ice Latte Mocha                 90 x 2
-Cappuccino                      75 x 1
-Cheesecake                      65 x 1
-Servis Ücreti                   25 x 1`;
+    const defaultContent = `Ice Latte Mocha 90 x 2
+Cappuccino 75 x 1
+Cheesecake 65 x 1
+Servis Ücreti 25 x 1`;
     
     const content = $('#receipt-content').value || defaultContent;
-    $('#preview-content').textContent = content;
+    
+    // Adisyon içeriğini satır satır işle ve format düzenle
+    const lines = content.split('\n').filter(line => line.trim() !== '');
+    const formattedContent = lines.map(line => {
+        // Satırları ürün adı ve fiyat x miktar olarak ayır
+        const trimmedLine = line.trim();
+        if (trimmedLine === '') return '';
+        
+        // Son kısmı bul (fiyat x miktar)
+        const matches = trimmedLine.match(/^(.+?)\s+(\d+\s*x\s*\d+)$/);
+        if (matches) {
+            const productName = matches[1].trim();
+            const priceQuantity = matches[2];
+            return `<div class="receipt-line"><span class="product-name">${productName}</span><span class="price-quantity">${priceQuantity}</span></div>`;
+        } else {
+            // Eğer format uymazsa olduğu gibi göster
+            return `<div class="receipt-line"><span class="product-name">${trimmedLine}</span></div>`;
+        }
+    }).join('');
+    
+    $('#preview-content').innerHTML = formattedContent;
     
     // Adisyon içeriği stilini her zaman uygula
     $('#preview-content').style.fontFamily = 'Courier New, monospace';

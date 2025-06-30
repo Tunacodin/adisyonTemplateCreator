@@ -354,6 +354,28 @@ body {
     padding: 0;
 }
 
+/* Adisyon satır düzeni */
+.receipt-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+    padding: 2px 0;
+}
+
+.product-name {
+    flex: 1;
+    text-align: left;
+    font-weight: normal;
+}
+
+.price-quantity {
+    font-weight: 500;
+    color: #333;
+    white-space: nowrap;
+    margin-left: 20px;
+}
+
 .receipt-totals {
     margin-bottom: 20px;
 }
@@ -556,6 +578,30 @@ body {
         letter-spacing: 0.2px !important;
     }
     
+    /* Adisyon satır düzeni - print */
+    .receipt-line {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        margin-bottom: 2px !important;
+        padding: 1px 0 !important;
+    }
+    
+    .product-name {
+        flex: 1 !important;
+        text-align: left !important;
+        font-weight: normal !important;
+        font-size: 10px !important;
+    }
+    
+    .price-quantity {
+        font-weight: bold !important;
+        color: black !important;
+        white-space: nowrap !important;
+        margin-left: 10px !important;
+        font-size: 10px !important;
+    }
+    
     /* Totals */
     .receipt-totals {
         margin-bottom: 6px;
@@ -619,6 +665,16 @@ body {
     
     .receipt-content {
         font-size: 9px !important;
+    }
+    
+    /* 58mm için adisyon satır düzeni */
+    .product-name {
+        font-size: 9px !important;
+    }
+    
+    .price-quantity {
+        font-size: 9px !important;
+        margin-left: 8px !important;
     }
 }
 
